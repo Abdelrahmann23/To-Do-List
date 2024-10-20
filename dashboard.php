@@ -200,6 +200,12 @@ background-color:#73b5c0 ;
         <ul class="nav-links">
             <li>
                 <a href="#">
+                    <i class="fa-regular fa-user"></i>
+                    <span class="link-name">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
                     <i class='bx bxs-dashboard'></i>
                     <span class="link-name">Dashboard</span>
                 </a>
