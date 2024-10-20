@@ -234,7 +234,7 @@ background-color:#73b5c0 ;
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="feedback.php">
                     <i class="fa-solid fa-message"></i>
                     <span class="link-name">Feedback</span>
                 </a>
@@ -249,7 +249,7 @@ background-color:#73b5c0 ;
     </div>
     
     <div class="toggle-btn" id="open-sidebar">
-        <i class="bx bx-menu"></i> 
+    
     </div>
 
     <script>
