@@ -105,7 +105,7 @@
         }
 
         .toggle-btn {
-            margin-left: 270px;
+            margin-left: 20px;
             padding: 10px;
             cursor: pointer;
         }
@@ -255,9 +255,9 @@
 <body>
     <div class="sidebar close">
         <div class="logo-details">
-            <i class='bx bx-list-check'></i>
+            <i class='bx bx-list-check' id="logo-btn"></i>
             <h3 class="logo-name"><span>T</span>o <span>D</span>o <span>L</span>ist</h3>
-            <i class="bx bx-x close-btn" id="close-sidebar"></i>
+    
         </div>
         <ul class="nav-links">
             <li>
@@ -342,10 +342,17 @@
     </div>
 
     <script>
-        // Sidebar toggle script
-        document.getElementById('open-sidebar').addEventListener('click', function() {
+
+         // Function to open the sidebar when the toggle button is clicked
+         document.getElementById('open-sidebar').addEventListener('click', function() {
             document.querySelector('.sidebar').classList.toggle('open');
         });
+
+        // Function to close the sidebar when the 'bx bx-list-check' icon is clicked
+        document.getElementById('logo-btn').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.remove('open');
+        });
+
 
         // Profile link toggle script
         document.getElementById('profileLink').addEventListener('click', function(event) {
