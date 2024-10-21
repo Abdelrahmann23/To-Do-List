@@ -103,23 +103,23 @@
       color: #aaa;
     }
     .days li::before {
-      position: absolute;
-      content: "";
-      left: 50%;
-      top: 50%;
-      height: 40px;
-      width: 40px;
-      z-index: -1;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-    }
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 60px; /* Increased from 40px to 60px */
+  width: 60px;  /* Increased from 40px to 60px */
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
 
     /* Task priority styles */
     .priority-high::before {
-      background-color: red;
+      background-color: #fc4025;
     }
     .priority-medium::before {
-      background-color: yellow;
+      background-color: #fae31b;
     }
     .priority-low::before {
       background-color: #92C7CF;
