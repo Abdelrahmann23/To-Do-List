@@ -1,5 +1,7 @@
 <html>
-
+<!-- https://png.pngtree.com/background/20211217/original/pngtree-blue-fresh-geometric-education-background-design-picture-image_1598184.jpg -->
+<!-- https://www.shutterstock.com/shutterstock/photos/1062315011/display_1500/stock-vector-to-do-list-icon-set-simple-set-of-to-do-list-vector-icons-for-web-design-isolated-on-blue-1062315011.jpg -->
+<!-- https://marketplace.canva.com/EAFI_DvPufs/1/0/1600w/canva-purple-and-blue-gradient-modern-desktop-wallpaper-2jA-xbTZ148.jpg -->
 <head>
 
 <style>
@@ -15,7 +17,7 @@ section{
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    background: url('https://png.pngtree.com/background/20211217/original/pngtree-blue-fresh-geometric-education-background-design-picture-image_1598184.jpg')no-repeat;
+    background: url('https://marketplace.canva.com/EAFI_DvPufs/1/0/1600w/canva-purple-and-blue-gradient-modern-desktop-wallpaper-2jA-xbTZ148.jpg')no-repeat;
     background-position: center;
     background-size: cover;
 }
