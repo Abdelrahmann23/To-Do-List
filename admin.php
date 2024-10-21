@@ -214,5 +214,36 @@
             </tbody>
         </table>
     </div>
+
+    <div class="dashboard-section">
+        <h2>Feedback Report</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feedback Type</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $feedback = [
+                    ['type' => 'Satisfying', 'count' => 70],
+                    ['type' => 'Neutral', 'count' => 20],
+                    ['type' => 'Unhappy', 'count' => 10],
+                ];
+
+                $totalFeedback = array_sum(array: array_column(array: $feedback, column_key: 'count'));
+
+                foreach ($feedback as $item) {
+                    $percentage = ($item['count'] / $totalFeedback) * 100;
+                    echo "<tr>
+                            <td>{$item['type']}</td>
+                            <td>" . number_format(num: $percentage, decimals: 2) . "%</td>
+                        </tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
