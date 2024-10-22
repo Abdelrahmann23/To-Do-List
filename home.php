@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
 <style>
 
 *{
@@ -105,6 +107,60 @@ nav{
     transform: translateY(8px);
     font-size: 35px;
 }
+.hamburger {
+            display: none;
+            font-size: 30px;
+            color: #FBF9F1;
+            cursor: pointer;
+        }
+
+/* Sidebar (hidden initially) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hidden off-screen */
+    width: 250px;
+    height: 100%;
+    background-color: #92C7CF;
+    transition: 0.3s ease;
+    z-index: 999;
+    padding-top: 70px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #FBF9F1;
+    font-size: 20px;
+    font-weight: 700;
+    transition: all 0.1s ease;
+}
+
+.sidebar a:hover {
+    background-color: #FBF9F1;
+    color: #AAD7D9;
+}
+
+.sidebar.active {
+    left: 0; /* Sidebar slides in */
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    /* Hide regular navigation links on smaller screens */
+    .nav {
+        display: none;
+    }
+
+    /* Show hamburger icon */
+    .hamburger {
+        display: block;
+    }
+    
+}
+
+
 img{
     transform: translate(730px,-10px);
     border-radius: 30px;
@@ -114,6 +170,7 @@ img{
 .homee{
     background-color: #FBF9F1;
     height: 750px;
+    border-bottom-right-radius: 400px;
 }
 
 
@@ -186,8 +243,94 @@ flex-wrap: wrap;
 }
 
 .services{
-    padding-top: 80px;
+    padding-top: 150px;
+    height: 600px;
+}
+
+.about{ 
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 260px;
+    
+}
+.image{
+    transform: translate(220px ,20px);
+}
+.image img{
+    width: 300px;
     height: 400px;
+    /* margin-top: 70px; */
+    transform: translate(800px,100px);
+    border-radius: 30px;
+}
+.paragraph{
+  padding-top: 130px;
+}
+.paragraph h1{
+    font-size: 50px;
+    color: #92C7CF;
+}
+.paragraph .logoo{
+    color: #92C7CF;
+    font-size: 65px;
+}
+.paragraph h2{
+    margin-top: 20px;
+    width: 50%;
+    font-size: 25px;
+}
+
+
+/* design footer */
+
+.footer{
+    background-color: #92C7CF;
+    width: 100%;
+    height: 200px;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+}
+.footer .header{
+    display: flex;
+    justify-content: center;
+   
+}
+
+.footer .header i {
+    color: #FBF9F1;
+}
+.list li{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.list a {
+  padding: 40px;
+  text-decoration: none;
+  color: #FBF9F1;
+  font-size: 25px;
+  font-weight: 800;
+}
+.list a:hover {
+
+  text-decoration: none;
+  color: #E5E1DA;
+  font-size: 30px;
+  font-weight: 900;
+}
+.icons{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.icons a{
+    text-decoration: none;
+    font-size: 40px;
+    padding-right: 10px;
+    color: black;
 }
 </style>
 
@@ -208,15 +351,27 @@ flex-wrap: wrap;
                  <a href="#Footer">Contact</a>
                  <a href="#"><i class='bx bx-log-in-circle'></i></a>                 
          </div>
-    
+         <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
      </nav>
+
+      <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="#Home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#About">About</a>
+        <a href="#Footer">Contact</a>
+        <a href="#"><i class='bx bx-log-in-circle'></i></a>
+    </div>
+
          <div class="homepage">
-            <h1>Organize your work and life </h1>
-            <h2>manage your ideas and work from anywhere so <br>you never forget anything again.</h2>
-            <button>start for free</button>
+            <h1 data-aos="fade-right" data-aos-duration="1400">Organize your work and life </h1>
+            <h2 data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">manage your ideas and work from anywhere so <br>you never forget anything again.</h2>
+            <button  data-aos="zoom-in-left" data-aos-duration="1400" data-aos-delay="300">start for free</button>
         </div>
         <div>
-            <img src="images/WhatsApp Image 2024-10-21 at 8.33.11 PM.jpeg" alt="" width="700px">
+            <img  src="images/WhatsApp Image 2024-10-21 at 8.33.11 PM.jpeg" alt="" width="700px"   >
         </div>
     </section>
 
@@ -253,6 +408,59 @@ flex-wrap: wrap;
 
     </section>
 
+ <!-- Section About -->
+ <div class="about" id="About">
+    <div class="image"><img src="images/done.png" alt=""></div>
+    <div class="paragraph">
+        <h1><span class="logoo">T</span>o<span class="logoo">D</span>O<span class="logoo">L</span>ist</h1>
+        <h2>A to-do list website is a productivity tool designed to help users manage tasks efficiently. It allows users to create, organize, and track their daily activities or long-term goals in an intuitive, user-friendly interface. By categorizing tasks, setting priorities, and providing reminders.</h2>
+    </div>
+  </div>
+  <br>
+
+
+  <!-- Section footer -->
+  <br>
+  <div class="footer" id="Footer">
+    <a href="" class="header">
+        <i class='bx bx-list-check'></i>
+        <h3><span class="logoo">T</span>o<span class="logoo">D</span>o<span class="logoo">L</span>ist</h3>
+       </a>
+     
+        <div class="icons">
+           <a href=""> <i class="ri-mail-line"></i></a>
+            <a href=""><i class="ri-youtube-fill"></i></a>
+        </div>
+       <div class="list">
+        <ul>
+            <li>
+                <a href="#Home">Home</a>
+                 <a href="#features">categories</a>
+                 <a href="#About">About</a>
+                 <a href="#">login</a>
+            </li>
+        </ul>
+       </div>
+    
+  </div>
+
+
+ <!----------------------------------------------->   
+ 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset:1,
+      });
+
+      const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+
+    // Toggle sidebar on hamburger click
+    hamburger.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+    </script>
 <!----------------------------------------------->
 
 </body>
