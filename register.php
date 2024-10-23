@@ -1,5 +1,5 @@
 <html>
-
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <head>
 <script>
 
@@ -138,28 +138,49 @@ section{
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    background: url('https://marketplace.canva.com/EAFI_DvPufs/1/0/1600w/canva-purple-and-blue-gradient-modern-desktop-wallpaper-2jA-xbTZ148.jpg')no-repeat;
-    background-position: 70% 10%;
+    background: url('blu.jpg')no-repeat;
+    background-position: 80% center;
     background-size: cover;
 }
-.form-box{
-    position: relative;
-    width: 400px;
-    height: 450px;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,0.5);
-    border-radius: 30px;
-    backdrop-filter: blur(15px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.logo-details i {
+    font-size: 50px;
+    color: #fff; 
+}
+
+.logo-name{
+    font-size: 40px;
+    color: #fff; 
+}
+
+.logo-details {
+    display: flex;  
+    align-items: center;  
+    position: absolute; 
+    top: 20px; 
+    left: 40px;
+    
+}
+.logo-details:hover{
+    transform: scale(1.115);
 
 }
+
+.logo-details a:hover{
+    text-decoration: none;
+
+}
+
+
+.logo-details a {
+    text-decoration: none; 
+}
+
 
 .form-box-reg{
     position: relative;
     width: 400px;
-    margin: 50px auto 50px;
+    margin: 110px auto 70px ;
     background: transparent;
     border: 2px solid rgba(255,255,255,0.5);
     border-radius: 30px;
@@ -167,22 +188,14 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-
+   
 }
 
-
-
-.h2-log{
-    margin-top: 15px;
-    font-size: 2.8em;
-    color: #fff;
-    text-align: center;
-}
 #signup{
     padding-top: 20px;
     padding-bottom: 10px;
     font-size: 2.9em;
-    color: #fff;
+    color: #686868;
     text-align: center;
     margin-top: 15px;
     margin-bottom: 30px;
@@ -191,13 +204,13 @@ section{
     position: relative;
      margin: 30px 0; 
     width: 310px;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #FFF;
 }
 .inputbox label{
     position: absolute;
     top: 50%;
     left: 5px;
-    color: #fff;
+    color: #686868;
     font-size: 1em;
     pointer-events: none;
    
@@ -221,7 +234,7 @@ input:not(:placeholder-shown) ~ label {
 .inputbox ion-icon{
     position: absolute;
     right: 8px;
-    color: #fff;
+    color: #686868;
     font-size: 1.2em;
     top: -5px;
 }
@@ -231,7 +244,7 @@ input:not(:placeholder-shown) ~ label {
     transition: 0.7 ease;
     height: 40px;
     border-radius: 40px;
-    background: #fff;
+    background: #FFF;
     border: none;
     outline: none;
     cursor: pointer;
@@ -242,7 +255,7 @@ input:not(:placeholder-shown) ~ label {
 .remember{
         margin: -15px 0 15px ;
         font-size: .9em;
-        color: #fff;
+        color: #686868;
         display: flex;
         justify-content: space-between;  
     
@@ -254,7 +267,7 @@ input:not(:placeholder-shown) ~ label {
 
 .btnlog:hover{
     transform: scale(1.115);
-background-color:blue;
+background-color:#686868;
 }
 
 .forget label input{
@@ -262,7 +275,7 @@ background-color:blue;
     
 }
 .forget label a{
-    color: #fff;
+    color: #686868;
     text-decoration: none;
 }
 .forget label a:hover{
@@ -271,18 +284,18 @@ background-color:blue;
 
 .register{
     font-size: .9em;
-    color: #fff;
+    color: #686868;
     text-align: center;
     margin: 25px 0 10px;
 }
 .register p a{
     text-decoration: none;
-    color: #fff;
+    color: #686868;
     font-weight: 600;
 }
 .register p a:hover{
     text-decoration: underline;
-    color: blue;
+    color: WHITE;
 }
 
 .error {
@@ -297,6 +310,11 @@ background-color:blue;
 
 <body>
 <section>
+<div class="logo-details">
+            <i class='bx bx-list-check' id="logo-btn"></i>
+            <a href= "" class="logo-name"><span><b>T</b></span>o<span><b>D</b></span>o<span><b>L</b></span>ist</a>
+    
+        </div>
         <div class="form-box-reg">
             <div class="form-value">
                 <form name="registerform"  action="" method="post">
