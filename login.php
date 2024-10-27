@@ -61,14 +61,15 @@ section{
     width: 400px;
     height: 450px;
     background: transparent;
-    border: 2px solid rgba(255,255,255,0.5);
+    border: 3px solid rgba(255,255,255,0.5);
     border-radius: 30px;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(25px);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 80px;
     margin-bottom: 10px;
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.2)
 }
 
 .form-box-reg{
