@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
                 // Normal user login
                 $_SESSION["login"] = true;
                 $_SESSION["id"] = $row["id"];
-                header("Location: dashboard.php");
+                header("Location: user.php");
                 exit();
             }
         } else {
