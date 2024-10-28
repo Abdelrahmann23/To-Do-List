@@ -1,3 +1,37 @@
+<?php
+require 'config.php';
+
+if (isset($_POST["submit"])) {
+    $name = $_POST["name"];
+    $lastname = $_POST["lastname"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $confpassword = $_POST["confpassword"];
+    $mobilenum = $_POST["mobilenum"];
+
+    // Check for duplicate email
+    $duplicate = mysqli_query($conn, "SELECT * FROM informations WHERE email='$email'");
+    if (mysqli_num_rows($duplicate) > 0) {
+        echo "<script>alert('Email is already taken');</script>";
+    } else {
+        // Ensure passwords match
+        if ($password === $confpassword) {
+            $query = "INSERT INTO informations  VALUES ('','$name', '$lastname', '$email', '$password', '$mobilenum')";
+            if (mysqli_query($conn, $query)) {
+                echo "<script> alert('Signup successful') ;</script>";
+                header("Location: login.php");
+                exit();
+            } else {
+                echo "<script>alert('Signup failed: " . mysqli_error($conn) . "');</script>";
+            }
+        } else {
+            echo "<script>alert('Passwords do not match');</script>";
+        }
+    }
+}
+?>
+
+
 <html>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <head>
@@ -7,14 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var form = document.querySelector('form[name="registerform"]');
 
     form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        var isValid = reg_validation(form);
-        console.log("Form validity before: " + isValid);
-
-        if (isValid) {
-           //  form.submit(); // Uncomment this line to allow form submission
-            console.log("Form validity after: " + isValid);
+        if (!reg_validation(form)) {
+            event.preventDefault(); // Prevent submission if validation fails
+            console.log("Form is invalid.");
+        } else {
+            console.log("Form is valid, submitting...");
+            form.submit(); // Proceed with submission if validation passes
         }
     });
 });
@@ -27,7 +59,7 @@ function reg_validation(form) {
     var name = form.name.value.trim();
     var lastname = form.lastname.value.trim();
     var email = form.email.value.trim();
-    var mobile = form.mobile.value.trim();
+    var mobile = form.mobilenum.value.trim();
     var password = form.password.value.trim();
     var confpassword = form.confpassword.value.trim();
 
@@ -38,87 +70,69 @@ function reg_validation(form) {
     var passwordErr = true;
     var confpasswordErr = true;
 
+    // Validate Name
     if (name === "") {
         displayerror("nameErr", "Your name is missing");
+    } else if (!/^[a-zA-Z\s]+$/.test(name)) {
+        displayerror("nameErr", "Please enter a valid name");
     } else {
-        var pattern = /^[a-zA-Z\s]+$/;
-        if (!pattern.test(name)) {
-            displayerror("nameErr", "Please enter a valid name");
-        } else {
-            displayerror("nameErr", "");
-            nameErr = false;
-        }
+        displayerror("nameErr", "");
+        nameErr = false;
     }
 
+    // Validate Last Name
     if (lastname === "") {
         displayerror("lastnameErr", "Your last name is missing");
+    } else if (!/^[a-zA-Z\s]+$/.test(lastname)) {
+        displayerror("lastnameErr", "Please enter a valid last name");
     } else {
-        var pattern = /^[a-zA-Z\s]+$/;
-        if (!pattern.test(lastname)) {
-            displayerror("lastnameErr", "Please enter a valid name");
-        } else {
-            displayerror("lastnameErr", "");
-            lastnameErr = false;
-        }
+        displayerror("lastnameErr", "");
+        lastnameErr = false;
     }
 
+    // Validate Email
     if (email === "") {
         displayerror("emailErr", "Your email address is missing");
+    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+        displayerror("emailErr", "Please enter a valid email address");
     } else {
-        var pattern = /^\S+@\S+\.\S+$/;
-        if (!pattern.test(email)) {
-            displayerror("emailErr", "Please enter a valid email address");
-        } else {
-            displayerror("emailErr", "");
-            emailErr = false;
-        }
+        displayerror("emailErr", "");
+        emailErr = false;
     }
 
+    // Validate Password
     if (password === "") {
         displayerror("passwordErr", "Your password is missing");
+    } else if (password.length < 8) {
+        displayerror("passwordErr", "Password must be at least 8 characters");
     } else {
-        var pattern = /^.{8,}$/;
-        if (!pattern.test(password)) {
-            displayerror("passwordErr", "Enter a valid password of at least 8 characters");
-        } else {
-            displayerror("passwordErr", "");
-            passwordErr = false;
-        }
+        displayerror("passwordErr", "");
+        passwordErr = false;
     }
 
+    // Confirm Password
     if (confpassword === "") {
-        displayerror("confpasswordErr", "Your password is missing");
+        displayerror("confpasswordErr", "Confirm your password");
+    } else if (confpassword !== password) {
+        displayerror("confpasswordErr", "Passwords do not match");
     } else {
-        if (confpassword !== password) {
-            displayerror("confpasswordErr", "Your password doesn't match the original one");
-        } else {
-            displayerror("confpasswordErr", "");
-            confpasswordErr = false;
-        }
+        displayerror("confpasswordErr", "");
+        confpasswordErr = false;
     }
 
+    // Validate Mobile Number
     if (mobile === "") {
         displayerror("mobileErr", "Your mobile number is missing");
+    } else if (!/^[0]\d{10}$/.test(mobile)) {
+        displayerror("mobileErr", "Enter an 11-digit mobile number starting with 0");
     } else {
-        var pattern = /^[0]\d{10}$/;
-        if (!pattern.test(mobile)) {
-            displayerror("mobileErr", "Enter an 11 digit mobile number, starting with 0");
-        } else {
-            displayerror("mobileErr", "");
-            mobileErr = false;
-        }
+        displayerror("mobileErr", "");
+        mobileErr = false;
     }
 
-  
-
-    if (nameErr || emailErr || mobileErr  || lastnameErr || passwordErr || confpasswordErr) {
-        return false;
-    } else {
-        return true;
-    }
-
+    // Return true if all validations pass
+    return !(nameErr || lastnameErr || emailErr || mobileErr || passwordErr || confpasswordErr);
 }
-
 
 
 
@@ -138,7 +152,7 @@ section{
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    background: url('blu.jpg')no-repeat;
+    background: url('images/blu.jpg')no-repeat;
     background-position: 80% center;
     background-size: cover;
 }
@@ -317,12 +331,13 @@ background-color:#686868;
         </div>
         <div class="form-box-reg">
             <div class="form-value">
-                <form name="registerform"  action="" method="post">
+        
+                <form name="registerform"  action="" method="post" autocomplete="off">
                     <h2 id="signup">Sign up</h2>
 
                     <div class="inputbox" style="margin-bottom: 0px;">
                         <ion-icon name="person-outline"></ion-icon>
-                        <input type="text"  name="name" >
+                        <input type="text"  name="name" id="name" >
                         <label for="name">First name : </label>
                     </div>
                     <div class="error" id="nameErr"></div>
@@ -330,7 +345,7 @@ background-color:#686868;
 
                     <div class="inputbox" style="margin-bottom: 0px;">
                         <ion-icon name="person-outline"></ion-icon>
-                        <input type="text"  name="lastname" >
+                        <input type="text"  name="lastname" id="lastname" >
                         <label for="lastname">Last Name : </label>
                     </div>
                     <div class="error" id="lastnameErr"></div>
@@ -364,13 +379,13 @@ background-color:#686868;
 
                     <div class="inputbox"  style="margin-bottom: 0px;">
                         <ion-icon name="call-outline"></ion-icon>
-                        <input type="text" id="mobilenum" name="mobile" maxlength="11">
+                        <input type="text" id="mobilenum" name="mobilenum" maxlength="11">
                         <label for="mobilenum">Mobile Number : </label>
                     </div>
                     <div class="error" id="mobileErr"></div>
 
 
-                    <button class="btnlog">Sign up </button>
+                    <button type="submit" name="submit" class="btnlog">Sign up </button>
                     
                     
                     <div class="register">
@@ -384,8 +399,11 @@ background-color:#686868;
             </div>
         </div>
     </section>
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
 
 
 </body>
