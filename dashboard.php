@@ -206,7 +206,7 @@ background-color:#73b5c0 ;
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="user.php">
                     <i class='bx bxs-dashboard'></i>
                     <span class="link-name">Dashboard</span>
                 </a>
@@ -542,7 +542,7 @@ background-color:#73b5c0 ;
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="user.php">
                     <i class='bx bxs-dashboard'></i>
                     <span class="link-name">Dashboard</span>
                 </a>
@@ -571,13 +571,13 @@ background-color:#73b5c0 ;
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="calendar.php">
                     <i class="fa-regular fa-calendar-days"></i>
                     <span class="link-name">Calendar</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="feedback.php">
                     <i class="fa-solid fa-message"></i>
                     <span class="link-name">Feedback</span>
                 </a>
@@ -586,7 +586,6 @@ background-color:#73b5c0 ;
     </div>
 
     <div class="toggle-btn" id="open-sidebar">
-        <i class="bx bx-menu"></i> 
     </div>
 
     <div class="profile-container">
