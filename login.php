@@ -8,11 +8,18 @@ if (isset($_POST["submit"])) {
     $row = mysqli_fetch_assoc($result);
 
     if (mysqli_num_rows($result) > 0) {
-        if ($password == $row["password"]) {  // Fixed this line
-            $_SESSION["login"] = true;
-            $_SESSION["id"] = $row["id"];
-            header("Location: dashboard.php");
-            exit();  // Ensures no further code runs
+        if ($password == $row["password"]) {
+            // Check for admin credentials
+            if ($email == "admin1@gmail.com" && $password == "admin123") {
+                header("Location: admin.php");
+                exit();
+            } else {
+                // Normal user login
+                $_SESSION["login"] = true;
+                $_SESSION["id"] = $row["id"];
+                header("Location: dashboard.php");
+                exit();
+            }
         } else {
             echo "<script>alert('Password is incorrect');</script>";
         }
