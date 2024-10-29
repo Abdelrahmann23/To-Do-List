@@ -280,7 +280,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="upcoming.php">
                     <i class="fa-solid fa-list-ol"></i>
                     <span class="link-name">Upcoming</span>
                 </a>
@@ -312,7 +312,7 @@
 
     <div class="profile-container">
         <div class="profile-icon">
-            <img src="/project/icon.jpg" alt="Profile Icon">
+            <img src="images/icon.jpg" alt="Profile Icon">  
         </div>
         <h2 id="usernameDisplay">mostafa_mounib</h2>
         <p id="emailDisplay">mostafamounib1@gmail.com</p>
