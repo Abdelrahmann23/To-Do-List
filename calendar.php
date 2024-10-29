@@ -16,28 +16,18 @@
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
-    .title {
-    margin-bottom: 650px;
-  }
-
-  .title h2 {
-    padding-left:60px;
-    font-size: 2rem;
-    font-weight: 600;
-    color: #333;
-  }
     body {
-      display: flex;
+      display: none;
       align-items: center;
       padding: 0 10px;
       justify-content: center;
-      min-height: 100vh;
+      min-height: 80vh;
       background: #FBF9F1;
       padding-right:50px;
-      margin-left:12%;
+      margin-left:33%;
     }
     .wrapper {
-      width: 850px;
+      width: 200%;
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
@@ -108,8 +98,8 @@
   content: "";
   left: 50%;
   top: 50%;
-  height: 60px; /* Increased from 40px to 60px */
-  width: 60px;  /* Increased from 40px to 60px */
+  height: 90px; /* Increased from 40px to 60px */
+  width: 90px;  /* Increased from 40px to 60px */
   z-index: -1;
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -128,9 +118,6 @@
   </style>
   <body>
   <?php include 'dashboard.php';?>
-<div class="title">
-  <h2>Calendar:</h2>
-  </div>
     <div class="wrapper">
       <header>
         <p class="current-date"></p>
@@ -179,18 +166,35 @@
           for (let i = 1; i <= lastDateofMonth; i++) {
               // Pre-set priorities and tasks for specific dates
               if (currYear === 2024 && currMonth === 9) { // October 2024
-                  if (i === 28) {
-                      liTag += `<li class="priority-high">${i}<br><small>hw1</small></li>`;
-                  } else if (i === 29) {
-                      liTag += `<li class="priority-medium">${i}<br><small>hw2</small></li>`;
-                  } else if (i === 30) {
-                      liTag += `<li class="priority-low">${i}<br><small>hw3</small></li>`;
+                  if (i === 1) {
+                      liTag += `<li class="priority-low">${i}<br><small>Grocery<br>shopping</small></li>`;
+                  } else if (i === 5) {
+                      liTag += `<li class="priority-high">${i}<br><small>Finish<br>report</small></li>`;
+                  } else if (i === 20) {
+                      liTag += `<li class="priority-high">${i}<br><small>GYM</small></li>`;
+                  } else if (i === 25) {
+                      liTag += `<li class="priority-medium">${i}<br><small>Hospital<br>appointment</small></li>`;
                   } else {
                       liTag += `<li>${i}</li>`;
                   }
               } else {
                   liTag += `<li>${i}</li>`;
               }
+
+              if (currYear === 2024 && currMonth === 10) { // October 2024
+                  if (i === 30) {
+                      liTag += `<li class="priority-high">${i}<br><small>Excel<br>sheets</small></li>`;
+                  } else if (i === 5) {
+                      liTag += `<li class="priority-medium">${i}<br><small>Project<br>meeting</small></li>`;
+                  } else if (i === 28) {
+                      liTag += `<li class="priority-low">${i}<br><small>Training</small></li>`;
+                  } else {
+                      liTag += `<li>${i}</li>`;
+                  }
+              } else {
+                  liTag += `<li>${i}</li>`;
+              }
+
           }
 
           for (let i = lastDayofMonth; i < 6; i++) {
