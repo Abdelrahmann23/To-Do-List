@@ -175,7 +175,7 @@ if (isset($_POST["submit"])) {
 <section>
     <div class="logo-details">
         <i class='bx bx-list-check' id="logo-btn"></i>
-        <a href="#" class="logo-name"><span><b>T</b></span>o<span><b>D</b></span>o<span><b>L</b></span>ist</a>    
+        <a href="home.php" class="logo-name"><span><b>T</b></span>o<span><b>D</b></span>o<span><b>L</b></span>ist</a>    
     </div>
     <div class="form-box">
         <div class="form-value">
