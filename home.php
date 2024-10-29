@@ -383,7 +383,9 @@ flex-wrap: wrap;
          <div class="homepage">
             <h1 data-aos="fade-right" data-aos-duration="1400">Organize your work and life </h1>
             <h2 data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">manage your ideas and work from anywhere so <br>you never forget anything again.</h2>
-            <button  data-aos="zoom-in-left" data-aos-duration="1400" data-aos-delay="300">start for free</button>
+            <a href="register.php">
+        <button data-aos="zoom-in-left" data-aos-duration="1400" data-aos-delay="300">Start for free</button>
+    </a>
         </div>
         <div>
             <img  src="images/WhatsApp Image 2024-10-21 at 8.33.11 PM.jpeg" alt="" width="700px"   >
