@@ -14,28 +14,28 @@ if (isset($_POST["submit"])) {
     if (mysqli_num_rows($duplicate) > 0) {
         echo "<script>alert('Email is already taken');</script>";
     } else {
-        
         if ($password === $confpassword) {
-           
-            // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            
-            // SQL statement
+            // Prepare and bind SQL statement without hashing the password
             $stmt = $conn->prepare("INSERT INTO informations (name, lastname, email, password, mobilenum) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssss", $name, $lastname, $email, $hashedPassword, $mobilenum);
+            $stmt->bind_param("sssss", $name, $lastname, $email, $password, $mobilenum);
 
             if ($stmt->execute()) {
-                echo "<script> alert('Signup successful');</script>";
+                echo "<script>alert('Signup successful');</script>";
+                // Redirect after successful signup
                 header("Location: login.php");
                 exit();
             } else {
-                echo "<script>alert('Signup failed: " . mysqli_error($conn) . "');</script>";
+                echo "<script>alert('Signup failed: " . $stmt->error . "');</script>";
             }
+
+            $stmt->close();
         } else {
             echo "<script>alert('Passwords do not match');</script>";
         }
     }
-}
 
+    mysqli_close($conn);
+}
 ?>
 
 
