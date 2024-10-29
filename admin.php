@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,150 +101,159 @@
         }
     </style>
 
-    <h1>Admin Dashboard</h1>
+<h1>Admin Dashboard</h1>
 
-    <div class="dashboard-section">
-        <h2>Active Users</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                    <th>Last Login</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $activeUsers = [
-                    ['username' => 'MostafaMounib', 'email' => 'mostafamounib@gmail.com', 'status' => 'Active', 'last_login' => '2024-10-10'],
-                    ['username' => 'HabibaAmr', 'email' => 'habibaamr@gmail.com', 'status' => 'Inactive', 'last_login' => '2024-09-25'],
-                    ['username' => 'Jana', 'email' => 'Jana@gmail.com', 'status' => 'Inactive', 'last_login' => '2024-09-11']
-                ];
+<div class="dashboard-section">
+    <h2>Active Users</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Last Login</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $activeUsers = [
+                ['username' => 'MostafaMounib', 'email' => 'mostafamounib@gmail.com', 'status' => 'Active', 'last_login' => '2024-10-10'],
+                ['username' => 'HabibaAmr', 'email' => 'habibaamr@gmail.com', 'status' => 'Inactive', 'last_login' => '2024-09-25'],
+                ['username' => 'Jana', 'email' => 'Jana@gmail.com', 'status' => 'Inactive', 'last_login' => '2024-09-11']
+            ];
 
-                foreach ($activeUsers as $user) {
-                    echo "<tr>
-                            <td>{$user['username']}</td>
-                            <td>{$user['email']}</td>
-                            <td>{$user['status']}</td>
-                            <td>{$user['last_login']}</td>
-                        </tr>";
+            foreach ($activeUsers as $user) {
+                echo "<tr>
+                        <td>{$user['username']}</td>
+                        <td>{$user['email']}</td>
+                        <td>{$user['status']}</td>
+                        <td>{$user['last_login']}</td>
+                    </tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
+
+<div class="dashboard-section">
+    <h2>Task Completion Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Assigned To</th>
+                <th>Status</th>
+                <th>Completion Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $taskCompletion = [
+                ['task' => 'Design Dashboard', 'assigned_to' => 'MostafaMounib', 'status' => 'Completed', 'completion_time' => '4 hours'],
+                ['task' => 'Develop Login Feature', 'assigned_to' => 'HabibaAmr', 'status' => 'In Progress', 'completion_time' => 'N/A'],
+                ['task' => 'Assignment 2', 'assigned_to' => 'Jana', 'status' => 'In Progress', 'completion_time' => 'N/A']
+            ];
+
+            $totalTasks = count($taskCompletion);
+            $completedTasks = 0;
+            $totalTime = 0;
+            $completedTaskCount = 0;
+
+            foreach ($taskCompletion as $task) {
+                if ($task['status'] === 'Completed') {
+                    $completedTasks++;
+                    $time = intval($task['completion_time']);
+                    $totalTime += $time;
+                    $completedTaskCount++;
                 }
-                ?>
-            </tbody>
-        </table>
-    </div>
+                echo "<tr>
+                        <td>{$task['task']}</td>
+                        <td>{$task['assigned_to']}</td>
+                        <td>{$task['status']}</td>
+                        <td>{$task['completion_time']}</td>
+                    </tr>";
+            }
 
-    <div class="dashboard-section">
-        <h2>Task Completion Report</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Task</th>
-                    <th>Assigned To</th>
-                    <th>Status</th>
-                    <th>Completion Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $taskCompletion = [
-                    ['task' => 'Design Dashboard', 'assigned_to' => 'MostafaMounib', 'status' => 'Completed', 'completion_time' => '4 hours'],
-                    ['task' => 'Develop Login Feature', 'assigned_to' => 'HabibaAmr', 'status' => 'In Progress', 'completion_time' => 'N/A'],
-                    ['task' => 'Assignment 2', 'assigned_to' => 'Jana', 'status' => 'In Progress', 'completion_time' => 'N/A']
-                ];
+            $completionRate = ($completedTasks / $totalTasks) * 100;
+            $averageTime = $completedTaskCount ? $totalTime / $completedTaskCount : 0;
+            ?>
+        </tbody>
+    </table>
 
-                $totalTasks = count($taskCompletion);
-                $completedTasks = 0;
-                $totalTime = 0;
-                $completedTaskCount = 0;
+    <p><strong>Task Completion Rate:</strong> <?php echo number_format($completionRate, 2); ?>%</p>
+    <p><strong>Average Completion Time:</strong> <?php echo number_format($averageTime, 2); ?> hours</p>
+</div>
 
-                foreach ($taskCompletion as $task) {
-                    if ($task['status'] === 'Completed') {
-                        $completedTasks++;
-                        $time = intval($task['completion_time']);
-                        $totalTime += $time;
-                        $completedTaskCount++;
-                    }
-                    echo "<tr>
-                            <td>{$task['task']}</td>
-                            <td>{$task['assigned_to']}</td>
-                            <td>{$task['status']}</td>
-                            <td>{$task['completion_time']}</td>
-                        </tr>";
-                }
+<div class="dashboard-section">
+    <h2>App Usage</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Login Time</th>
+                <th>Logout Time</th>
+                <th>Time Spent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $appUsage = [
+                ['user' => 'MostafaMounib', 'login_time' => '2024-10-10 09:00', 'logout_time' => '2024-10-10 11:00', 'time_spent' => '2 hours'],
+                ['user' => 'HabibaAmr', 'login_time' => '2024-09-25 14:30', 'logout_time' => '2024-09-25 15:00', 'time_spent' => '30 mins'],
+                ['user' => 'Jana', 'login_time' => '2024-09-25 14:30', 'logout_time' => '2024-09-25 18:30', 'time_spent' => '4 hours']
+            ];
 
-                $completionRate = ($completedTasks / $totalTasks) * 100;
-                $averageTime = $completedTaskCount ? $totalTime / $completedTaskCount : 0;
-                ?>
-            </tbody>
-        </table>
+            foreach ($appUsage as $usage) {
+                echo "<tr>
+                        <td>{$usage['user']}</td>
+                        <td>{$usage['login_time']}</td>
+                        <td>{$usage['logout_time']}</td>
+                        <td>{$usage['time_spent']}</td>
+                    </tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
-        <p><strong>Task Completion Rate:</strong> <?php echo number_format($completionRate, 2); ?>%</p>
-        <p><strong>Average Completion Time:</strong> <?php echo number_format($averageTime, 2); ?> hours</p>
-    </div>
+<div class="dashboard-section">
+    <h2>Feedback Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Feedback Type</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $feedback = [
+                ['type' => 'Satisfying', 'count' => 70],
+                ['type' => 'Neutral', 'count' => 20],
+                ['type' => 'Unhappy', 'count' => 10],
+            ];
 
-    <div class="dashboard-section">
-        <h2>App Usage</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Login Time</th>
-                    <th>Logout Time</th>
-                    <th>Time Spent</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $appUsage = [
-                    ['user' => 'MostafaMounib', 'login_time' => '2024-10-10 09:00', 'logout_time' => '2024-10-10 11:00', 'time_spent' => '2 hours'],
-                    ['user' => 'HabibaAmr', 'login_time' => '2024-09-25 14:30', 'logout_time' => '2024-09-25 15:00', 'time_spent' => '30 mins'],
-                    ['user' => 'Jana', 'login_time' => '2024-09-25 14:30', 'logout_time' => '2024-09-25 18:30', 'time_spent' => '4 hours']
-                ];
+            $totalFeedback = array_sum(array_column($feedback, 'count'));
 
-                foreach ($appUsage as $usage) {
-                    echo "<tr>
-                            <td>{$usage['user']}</td>
-                            <td>{$usage['login_time']}</td>
-                            <td>{$usage['logout_time']}</td>
-                            <td>{$usage['time_spent']}</td>
-                        </tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
+            foreach ($feedback as $item) {
+                $percentage = ($item['count'] / $totalFeedback) * 100;
+                echo "<tr>
+                        <td>{$item['type']}</td>
+                        <td>" . number_format($percentage, 2) . "%</td>
+                    </tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
-    <div class="dashboard-section">
-        <h2>Feedback Report</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Feedback Type</th>
-                    <th>Percentage</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $feedback = [
-                    ['type' => 'Satisfying', 'count' => 70],
-                    ['type' => 'Neutral', 'count' => 20],
-                    ['type' => 'Unhappy', 'count' => 10],
-                ];
+<!-- Sign Out Button -->
+<div class="dashboard-section">
+    <form action="login.php" method="get">
+        <button type="submit">Sign Out</button>
+    </form>
+</div>
 
-                $totalFeedback = array_sum(array: array_column(array: $feedback, column_key: 'count'));
 
-                foreach ($feedback as $item) {
-                    $percentage = ($item['count'] / $totalFeedback) * 100;
-                    echo "<tr>
-                            <td>{$item['type']}</td>
-                            <td>" . number_format(num: $percentage, decimals: 2) . "%</td>
-                        </tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
 </body>
 </html>
