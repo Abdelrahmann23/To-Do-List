@@ -14,11 +14,17 @@ if (isset($_POST["submit"])) {
     if (mysqli_num_rows($duplicate) > 0) {
         echo "<script>alert('Email is already taken');</script>";
     } else {
-        // Ensure passwords match
+        
         if ($password === $confpassword) {
-            $query = "INSERT INTO informations  VALUES ('','$name', '$lastname', '$email', '$password', '$mobilenum')";
-            if (mysqli_query($conn, $query)) {
-                echo "<script> alert('Signup successful') ;</script>";
+           
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            
+            // SQL statement
+            $stmt = $conn->prepare("INSERT INTO informations (name, lastname, email, password, mobilenum) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssss", $name, $lastname, $email, $hashedPassword, $mobilenum);
+
+            if ($stmt->execute()) {
+                echo "<script> alert('Signup successful');</script>";
                 header("Location: login.php");
                 exit();
             } else {
@@ -29,6 +35,7 @@ if (isset($_POST["submit"])) {
         }
     }
 }
+
 ?>
 
 
