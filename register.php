@@ -324,6 +324,32 @@ background-color:#686868;
     font-size: 90%;
     margin-bottom: 20px;
 }
+
+ /* Media Queries */
+ @media screen and (max-width: 600px) {
+            .logo-details i {
+                font-size: 60px;
+            }
+
+            .logo-name {
+                font-size: 20px;
+            }
+
+            .form-box-reg {
+                width: 90%;
+                padding: 15px;
+            }
+
+            #signup {
+                font-size: 1.8em;
+            }
+
+            .btnlog {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+
 </style>
 
 </head>

@@ -148,6 +148,20 @@ nav{
 
 /* Responsive Media Queries */
 @media (max-width: 768px) {
+
+    nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+    background-color:#92C7CF;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    width: 27%;
+    position: fixed;
+    z-index: 10;
+}
+
     /* Hide regular navigation links on smaller screens */
     .nav {
         display: none;
@@ -157,7 +171,18 @@ nav{
     .hamburger {
         display: block;
     }
-    
+
+    .about{
+        margin: -200px;
+    }
+
+    .list a {
+    padding:10px;
+    text-decoration: none;
+    color: #FBF9F1;
+    font-size: 20px;
+    font-weight: 600;
+    }
 }
 
 
@@ -321,17 +346,7 @@ flex-wrap: wrap;
   font-size: 30px;
   font-weight: 900;
 }
-.icons{
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-.icons a{
-    text-decoration: none;
-    font-size: 40px;
-    padding-right: 10px;
-    color: black;
-}
+
 </style>
 
 
@@ -349,7 +364,7 @@ flex-wrap: wrap;
                  <a href="#features">features</a>
                  <a href="#About">About</a>
                  <a href="#Footer">Contact</a>
-                 <a href="#"><i class='bx bx-log-in-circle'></i></a>                 
+                 <a href="login.php"><i class='bx bx-log-in-circle'></i></a>                 
          </div>
          <div class="hamburger" id="hamburger">
             <i class="fas fa-bars"></i>
@@ -362,7 +377,7 @@ flex-wrap: wrap;
         <a href="#features">Features</a>
         <a href="#About">About</a>
         <a href="#Footer">Contact</a>
-        <a href="#"><i class='bx bx-log-in-circle'></i></a>
+        <a href="login.php"><i class='bx bx-log-in-circle'></i></a>
     </div>
 
          <div class="homepage">
@@ -437,7 +452,7 @@ flex-wrap: wrap;
                 <a href="#Home">Home</a>
                  <a href="#features">categories</a>
                  <a href="#About">About</a>
-                 <a href="#">login</a>
+                 <a href="login.php">login</a>
             </li>
         </ul>
        </div>

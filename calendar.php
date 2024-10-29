@@ -21,6 +21,7 @@
   }
 
   .title h2 {
+    padding-left:60px;
     font-size: 2rem;
     font-weight: 600;
     color: #333;
