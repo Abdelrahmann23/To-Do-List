@@ -19,7 +19,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 95vh;
-  padding-left:15%;
+  padding-left:27%;
 }
 
 .panel-container {

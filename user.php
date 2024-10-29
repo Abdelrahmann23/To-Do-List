@@ -204,8 +204,8 @@ select {
         <select class="todo-category" required>
             <option value="" disabled selected>Category</option>
             <option value="work">Work</option>
-            <option value="home">Home</option>
-            <option value="entertainment">Entertainment</option>
+            <option value="School">School</option>
+            <option value="Personal">Personal</option>
         </select>
         <select class="todo-reminder" required>
             <option value="" disabled selected>Reminder</option>
