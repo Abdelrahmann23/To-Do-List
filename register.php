@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
         
         if ($password === $confpassword) {
            
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             
             // SQL statement
             $stmt = $conn->prepare("INSERT INTO informations (name, lastname, email, password, mobilenum) VALUES (?, ?, ?, ?, ?)");
