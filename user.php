@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <title>User dashboard</title>
 </head>
 <style>
@@ -20,8 +22,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left:16%;
-   
 }
 
 header {
@@ -206,8 +206,8 @@ select {
         <select class="todo-category" required>
             <option value="" disabled selected>Category</option>
             <option value="work">Work</option>
-            <option value="School">School</option>
-            <option value="Personal">Personal</option>
+            <option value="home">Home</option>
+            <option value="entertainment">Entertainment</option>
         </select>
         <select class="todo-reminder" required>
             <option value="" disabled selected>Reminder</option>
@@ -230,8 +230,8 @@ select {
 
 
 <script>
-  // Selectors
-const todoInput = document.querySelector('.todo-input');
+
+  const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 const todoPriority = document.querySelector('.todo-priority');
@@ -240,8 +240,10 @@ const todoReminder = document.querySelector('.todo-reminder');
 const filterOption = document.querySelector('.filter-todo');
 
 // Event Listeners
+
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
+
 
 // Functions
 function addTodo(event) {
