@@ -18,7 +18,7 @@
         }
         .container {
             background-color: #ffffff;
-            max-width: 1600px;
+            max-width: 1200px;
             width: 100%;
             height: 100vh;
             overflow-y: auto;
