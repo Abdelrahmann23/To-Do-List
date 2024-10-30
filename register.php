@@ -44,8 +44,8 @@ if (isset($_POST["submit"])) {
 <head>
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
-    var form = document.querySelector('form[name="registerform"]');
+document.addEventListener("DOMContentLoaded", function () {  //dom de btl2ot file el htlm
+    var form = document.querySelector('form[name="registerform"]'); //query selector btkhtar register form
 
     form.addEventListener("submit", function (event) {
         if (!reg_validation(form)) {

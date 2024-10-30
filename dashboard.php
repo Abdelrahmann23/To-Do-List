@@ -328,6 +328,7 @@
 
         <div class="input-group" id="changePasswordForm" style="display: none;">
             <input type="password" id="newPassword" placeholder="Enter new password">
+            <input type="password" id="confirmNewPassword" placeholder="Confirm New Password">
             <a href="#" class="button submit-btn" onclick="updatePassword()">Submit</a>
         </div>
 
@@ -390,17 +391,22 @@
         }
 
         function updatePassword() {
-            const newPassword = document.getElementById('newPassword').value;
-            const passwordRegex = /^(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
-            if (newPassword === "") {
-                alert("Please enter a new password.");
-            } else if (passwordRegex.test(newPassword)) {
-                alert("Password updated successfully!");
-                document.getElementById('changePasswordForm').style.display = 'none';
-            } else {
-                alert("Password must contain at least one uppercase letter, one special character, and be at least 8 characters long.");
-            }
-        }
+             const newPassword = document.getElementById('newPassword').value;
+              const confirmNewPassword = document.getElementById('confirmNewPassword').value; 
+              const passwordRegex = /^(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
+               if (newPassword === "") 
+               { alert("Please enter a new password.");
+
+                } else if (confirmNewPassword === "") 
+                { alert("Please confirm your new password."); 
+
+                } else if (newPassword !== confirmNewPassword)
+                 { alert("Passwords do not match. Please try again."); }
+                  else if (passwordRegex.test(newPassword)) 
+                  { alert("Password updated successfully!"); 
+                    document.getElementById('changePasswordForm').style.display = 'none';
+                 } else {
+                     alert("Password must contain at least one uppercase letter, one special character, and be at least 8 characters long."); } }
 
         function updateEmail() {
             const newEmail = document.getElementById('newEmail').value;
