@@ -18,7 +18,7 @@
         }
         .container {
             background-color: #ffffff;
-            max-width: 1600px;
+            max-width: 1200px;
             width: 100%;
             height: 100vh;
             overflow-y: auto;
@@ -100,6 +100,15 @@
                 priorityFilter.style.display = 'block';
             }
         }
+
+        function toggleTaskVisibility(event) {
+    const taskCard = event.target.closest('.task-card');
+    if (event.target.checked) {
+        taskCard.style.display = 'none';
+    }
+}
+
+
     </script>
 </head>
 <body>
@@ -186,7 +195,7 @@
             foreach ($tasks as $task) {
                 echo "<div class='task-card'>
                         <div class='checkbox-container'>
-                            <input type='checkbox' name='task_completed' value='{$task['name']}'>
+                            <input type='checkbox' name='task_completed' value='{$task['name']}' onclick='toggleTaskVisibility(event)'>
                         </div>
                         <div class='task-details'>
                             <h2>{$task['name']}</h2>
